@@ -1,8 +1,8 @@
-let process = require ("process")
-const comando = process.argv[2];
-const comando2 = process.argv[3];
-const comando3 = process.argv[4];
-const fs = require('fs');
+// let process = require ("process")
+// const comando = process.argv[2];
+// const comando2 = process.argv[3];
+// const comando3 = process.argv[4];
+// const fs = require('fs');
 
 
 
