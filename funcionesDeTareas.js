@@ -165,4 +165,4 @@ const operaciones = {
     "prueba": prueba,
     
 }
-module.exports = operaciones
+// module.exports = operaciones
