@@ -3,11 +3,29 @@ const comando = process.argv[2];
 const comando2 = process.argv[3];
 const comando3 = process.argv[4];
 const fs = require('fs');
+
+
+
+
+
+
+
+
+
+
 let funciones = {
+
+
     leerJson : function() {
         return JSON.parse(fs.readFileSync('./tareas.json','utf-8'))
     },
-    agregarTarea : function(titulo,estado) {
+
+
+
+
+
+
+    agregarTarea : function(titulo,estado="pendiente") {
         /* con los paramaetros creo una nueva tarea */
         let nuevaTarea = { 
             titulo,
@@ -18,20 +36,47 @@ let funciones = {
         fs.writeFileSync('./tareas.json',JSON.stringify(tareas),'utf-8')
         this.listarTareas2()
     },
+
+
+
+
+
+
+
+
+
  
     listarTareas2 : function(){
+        let comando = document.getElementById('variable').value;
         let tareas = this.leerJson()
         tareas.forEach(i =>{
         console.log(i.titulo+" "+i.estado);
             
         });
     },
-    filtrar : function(filtro){
+
+
+
+
+
+    filtrarNombre : function(filtro){
         let tareas= this.leerJson()
-        let tareasFiltradas = tareas.filter(tarea=>tarea.estado=== filtro || tarea.titulo.includes(filtro));
+        let tareasFiltradas = tareas.filter(tarea=>tarea.titulo=== filtro);
         return tareasFiltradas.forEach(i =>{
             console.log(i.titulo+" "+i.estado)})
     },
+
+
+    filtrarEstado : function(filtro){
+        let tareas= this.leerJson()
+        let tareasFiltradas = tareas.filter(tarea=>tarea.estado=== filtro);
+        return tareasFiltradas.forEach(i =>{
+            console.log(i.titulo+" "+i.estado)})
+    },
+
+
+
+
     deshacer : function(){
         let tareas = this.leerJson()
         if(!tareas[0]){return console.log("no hay tarea")}
@@ -43,10 +88,18 @@ let funciones = {
         this.listarTareas2()
         
     },
+
+
+
+
     guardarJson : function(tareas){
     fs.writeFileSync('./tareas.json',JSON.stringify(tareas),'utf-8')
 
     },
+
+
+
+
     cambiarEstado : function(state,newstate){
         let tareas = this.leerJson
         let tareasmodificadas = tareas.map(tarea => {pass})
@@ -57,25 +110,45 @@ let funciones = {
     
 }
 
-//let prueba = argumento => argumento==="listar" ? listar():argumento === undefined ? console.log("Atención - Tienes que pasar una acción.") : console.log("No entiendo qué quieres hacer")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let prueba = () => {
+    let comando = document.getElementById('variable').value;
     switch (comando) {
         case "agregar":
             if(!comando2){
                 console.log("debes escribir un titulo")
                 break
             }
-            else if(!comando3){
-                console.log("debes escribir un estado")
-                break
-            }
+            // else if(!comando3){
+            //     console.log("debes escribir un estado")
+            //     break
+            // }
             funciones.agregarTarea(comando2,comando3)
             break;
         case "listar":
             funciones.listarTareas2()
             break
-        case "filtrar":
-            funciones.filtrar(comando2)
+        case "filtrarEstado":
+            funciones.filtrarEstado(comando2)
+            break;
+            case "filtrarNombre":
+            funciones.filtrarNombre(comando2)
             break;
         case "borrar":
             funciones.deshacer(comando2)
