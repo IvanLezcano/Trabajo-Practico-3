@@ -9,14 +9,21 @@ body{
     color: blanchedalmond;
 }
 
-main{
+.horizontal{
     display: flex;
 
     width: 100%;
     margin: auto;
     align-items: center;
 }
+.horizontal label input{
+    margin-bottom: 3rem !important;
+}
 .tarea{
-    flex-direction: column;
+    flex-direction: row;
 
+}
+.vertical{
+    display: flex;
+    justify-content: center;
 }

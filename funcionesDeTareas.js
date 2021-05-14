@@ -84,11 +84,11 @@ let funciones = {
         
         tareas2=[]
         for(let i = 0; i < tarea.length; i++) {
-            tareas2.push(tarea[i].titulo+" "+tarea[i].estado);
+            tareas2.push("<br>"+tarea[i].titulo+" "+tarea[i].estado);
             
         }
         console.log(tareas2)
-        document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
+        document.getElementById("listado").innerHTML = "estas son sus tareas! :"+ tareas2
     },
 
 
@@ -102,7 +102,7 @@ let funciones = {
         let tareasFiltradas = tareas.filter(tarea=>tarea.titulo=== filtro);
         tareas2=[]
         for(let i = 0; i < tareasFiltradas.length; i++) {
-            tareas2.push(tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
+            tareas2.push("<br>"+tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
             
         }
         document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
@@ -118,7 +118,7 @@ let funciones = {
         let tareasFiltradas = tareas.filter(tarea=>tarea.estado=== filtro);
         tareas2=[]
         for(let i = 0; i < tareasFiltradas.length; i++) {
-            tareas2.push(tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
+            tareas2.push("<br>"+tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
             
         }
         document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
