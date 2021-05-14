@@ -92,12 +92,14 @@ let funciones = {
     },
 
 
-    filtrarEstado : function(filtro){
+    filtrarEstado : function(){
+        let filtro = document.getElementById('comando3').value;
+
         let tareas =JSON.parse(localStorage.getItem("Tareas"))
         let tareasFiltradas = tareas.filter(tarea=>tarea.estado=== filtro);
         tareas2=[]
-        for(let i = 0; i < tarea.length; i++) {
-            tareas2.push(tarea[i].titulo+" "+tarea[i].estado);
+        for(let i = 0; i < tareasFiltradas.length; i++) {
+            tareas2.push(tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
             
         }
         console.log(tareas2)
