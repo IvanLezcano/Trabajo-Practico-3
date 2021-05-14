@@ -1,9 +1,8 @@
 // let process = require ("process")
 // let operaciones = require("./funcionesDeTareas")
 
-// operaciones.prueba()
 
 function crearObjeto(){
-    let tareas=[{}]
-    localStorage.setItem("Tareas",tareas);
+    let tareas=[{"titulo":"saltar","estado":"pndiente"},{"titulo":"sdasd","estado":"asdasdasdas"},{"titulo":"sdasd","estado":"asdasdasdas"},{"titulo":"saltar","estado":"pendiente"},{"titulo":"saltar","estado":"finalizado"}]
+    localStorage.setItem("Tareas",JSON.stringify(tareas));
 }

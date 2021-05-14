@@ -48,7 +48,7 @@ let funciones = {
  
     listarTareas2 : function(){
         let comando = document.getElementById('variable').value;
-        let tareas = this.leerJson()
+        let tareas = JSON.parse(localStorage.getItem("Tareas"))
         tareas.forEach(i =>{
         console.log(i.titulo+" "+i.estado);
             
@@ -166,3 +166,9 @@ const operaciones = {
     
 }
 // module.exports = operaciones
+
+
+
+
+
+
