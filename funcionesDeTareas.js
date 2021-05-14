@@ -15,26 +15,27 @@
 
 let funciones = {
 
-
-    leerJson : function() {
-        return JSON.parse(fs.readFileSync('./tareas.json','utf-8'))
-    },
-
-
+    crearObjeto:function(){
+        let tareas=[{"titulo":"saltar","estado":"pndiente"},{"titulo":"sdasd","estado":"asdasdasdas"},{"titulo":"sdasd","estado":"asdasdasdas"},{"titulo":"saltar","estado":"pendiente"},{"titulo":"saltar","estado":"finalizado"}]
+        localStorage.setItem("Tareas",JSON.stringify(tareas))}
+    ,
 
 
 
 
     agregarTarea : function(titulo,estado="pendiente") {
-        /* con los paramaetros creo una nueva tarea */
+        
         let nuevaTarea = { 
             titulo,
             estado
         }
-        let tareas = this.leerJson(); //leo el array
-        tareas.push(nuevaTarea) //agrego una nueva tarea!
-        fs.writeFileSync('./tareas.json',JSON.stringify(tareas),'utf-8')
+        let tareas2 =JSON.parse(localStorage.getItem("Tareas"))
+        tareas2.push(nuevaTarea)
+        console.log(tareas2)
+        localStorage.setItem("Tareas",JSON.stringify(tareas2))
         this.listarTareas2()
+
+        
     },
 
 
@@ -47,12 +48,20 @@ let funciones = {
 
  
     listarTareas2 : function(){
+        
         let comando = document.getElementById('variable').value;
         let tareas = JSON.parse(localStorage.getItem("Tareas"))
-        tareas.forEach(i =>{
-        console.log(i.titulo+" "+i.estado);
+        if (tareas=== null) {
+            this.crearObjeto()
             
-        });
+        }
+        tareas2=[]
+        for(let i = 0; i < tareas.length; i++) {
+            tareas2.push(tareas[i].titulo+" "+tareas[i].estado);
+            
+        }
+        console.log(tareas2)
+        document.getElementById("listado").innerHTML = tareas2
     },
 
 
@@ -92,12 +101,6 @@ let funciones = {
 
 
 
-    guardarJson : function(tareas){
-    fs.writeFileSync('./tareas.json',JSON.stringify(tareas),'utf-8')
-
-    },
-
-
 
 
     cambiarEstado : function(state,newstate){
@@ -131,10 +134,12 @@ let prueba = () => {
     let comando = document.getElementById('variable').value;
     switch (comando) {
         case "agregar":
-            if(!comando2){
-                console.log("debes escribir un titulo")
-                break
-            }
+            let comando2 = document.getElementById('comando2').value;
+            let comando3 = document.getElementById('comando3').value;
+            // if(!comando2){
+            //     console.log("debes escribir un titulo")
+            //     break
+            // }
             // else if(!comando3){
             //     console.log("debes escribir un estado")
             //     break
