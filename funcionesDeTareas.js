@@ -15,19 +15,13 @@
 
 let funciones = {
 
-    crearObjeto:function(){
-        let tareas=[{"titulo":"saltar","estado":"pndiente"},{"titulo":"sdasd","estado":"asdasdasdas"},{"titulo":"sdasd","estado":"asdasdasdas"},{"titulo":"saltar","estado":"pendiente"},{"titulo":"saltar","estado":"finalizado"}]
-        localStorage.setItem("Tareas",JSON.stringify(tareas))}
-    ,
-
-
-
+  
 
     agregarTarea : function(titulo,estado="pendiente") {
         
         let nuevaTarea = { 
-            titulo,
-            estado
+            titulo:titulo,
+            estado:estado
         }
         let tareas2 =JSON.parse(localStorage.getItem("Tareas"))
         tareas2.push(nuevaTarea)
@@ -61,7 +55,7 @@ let funciones = {
             
         }
         console.log(tareas2)
-        document.getElementById("listado").innerHTML = tareas2
+        document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
     },
 
 
@@ -86,31 +80,25 @@ let funciones = {
 
 
 
-    deshacer : function(){
-        let tareas = this.leerJson()
+    deshacer : function(comando2){
+        let tareaporborrar = document.getElementById('comando2').value;
+
+        let tareas = JSON.parse(localStorage.getItem("Tareas"))
         if(!tareas[0]){return console.log("no hay tarea")}
-        tareas.pop()
-        console.log("****************")
+        let tareasnuevas = tareas.filter(tarea => tarea.titulo !==tareaporborrar );
+        console.log(tareaporborrar)
         console.log("tarea ah sido borrada")
         console.log("*******************")
-        this.guardarJson(tareas)
+        localStorage.setItem("Tareas",JSON.stringify(tareasnuevas))
+        document.getElementById("mensaje").innerHTML = "tarea ah sido borrada"
         this.listarTareas2()
         
-    },
-
-
-
-
-
-
-    cambiarEstado : function(state,newstate){
-        let tareas = this.leerJson
-        let tareasmodificadas = tareas.map(tarea => {pass})
-        this.guardarJson(tareasmodificadas)
-        this.listarTareas2()
-
     }
-    
+
+
+
+
+
 }
 
 
@@ -132,6 +120,8 @@ let funciones = {
 
 let prueba = () => {
     let comando = document.getElementById('variable').value;
+
+
     switch (comando) {
         case "agregar":
             let comando2 = document.getElementById('comando2').value;
@@ -156,7 +146,7 @@ let prueba = () => {
             funciones.filtrarNombre(comando2)
             break;
         case "borrar":
-            funciones.deshacer(comando2)
+            funciones.deshacer()
             break;
         case "cambiar":
             funciones.cambiarEstado(comando2)
