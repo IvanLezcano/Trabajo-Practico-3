@@ -1,48 +1,48 @@
-console.log("hola")
-let scopee= parseInt(prompt("Test"))
-console.log(scopee)
+// console.log("hola")
+// let scopee= parseInt(prompt("Test"))
+// console.log(scopee)
 
 
 
 
-function escribir(){
-    document.write("<p> hola"+ "</p>")
+// function escribir(){
+//     document.write("<p> hola"+ "</p>")
     
-}
-escribir()
+// }
+// escribir()
 
 
 
 
 
-function quepasa(){
-    let vara = document.getElementById('variable').value;
+// function quepasa(){
+//     let vara = document.getElementById('variable').value;
 
 
-    if(!vara){
-        document.write("<p> hola usuario </p>")
-        console.log(vara)
-    }
-    else{
-        document.write("<p> hola "+ vara + " como andas?</p>")
-        console.log(vara)
-    }
-}
+//     if(!vara){
+//         document.write("<p> hola usuario </p>")
+//         console.log(vara)
+//     }
+//     else{
+//         document.write("<p> hola "+ vara + " como andas?</p>")
+//         console.log(vara)
+//     }
+// }
 
 
 
 
-function funcionaAfuera(){
-    let vara = document.getElementById('variable').value;
+// function funcionaAfuera(){
+//     let vara = document.getElementById('variable').value;
 
 
-    if(!scopee){
-        document.write("<p> hola3 </p>")
-        console.log(scopee)
-    }
-    else{
-        document.write("<p> holaaaa"+ scopee + "</p>")
-        console.log(scopee)
-    }
-}
+//     if(!scopee){
+//         document.write("<p> hola3 </p>")
+//         console.log(scopee)
+//     }
+//     else{
+//         document.write("<p> holaaaa"+ scopee + "</p>")
+//         console.log(scopee)
+//     }
+// }
 
