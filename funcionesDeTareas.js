@@ -178,7 +178,7 @@ let prueba = () => {
             let comando2 = document.getElementById('comando2').value;
             let comando3 = document.getElementById('comando3').value;
              if(!comando2){
-                document.getElementById("mensaje").innerHTML = "Porfavor pone una tarea"
+                document.getElementById("mensaje").innerHTML = "Porfavor pone una tarea valida"
                  break
                 }
                 
@@ -188,9 +188,15 @@ let prueba = () => {
             funciones.listarTareas2()
             break
         case "filtrarEstado":
+        case "filtrarestado":
+        case "filtrar estado":
+        case "filtrar Estado":
             funciones.filtrarEstado()
             break;
-            case "filtrarNombre":
+        case "filtrarNombre":   
+        case "filtrarnombre":
+        case "filtrar nombre":
+        case "filtrar Nombre":
             funciones.filtrarNombre()
             break;
         case "borrar":
@@ -199,8 +205,10 @@ let prueba = () => {
         case "cambiar":
             funciones.cambiarEstado(comando2)
             break;
-    
+        
         default:
+            document.getElementById("mensaje").innerHTML = "Porfavor pone un comando valido en accion"
+
             break;
     }}
 

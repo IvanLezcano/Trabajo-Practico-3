@@ -1,0 +1,89 @@
+@media  (max-width: 500px){
+
+    *{
+        margin: 0 !important;
+        font-size: 20px;
+        padding: 0;
+    }
+    .fondo{
+        max-width: 100%;
+    
+        width: 100%;
+        background: rgb(173,89,236);
+        background: linear-gradient(90deg, rgba(173,89,236,0.908000700280112) 11%, rgba(0,0,0,1) 55%);
+        background-size: 100% !important;
+        border: 2px solid purple;
+    }
+    body{
+        max-width: 100%;
+    
+        background-color: black;
+        color: blanchedalmond;
+    }
+    
+    .horizontal{
+        max-width: 100%;
+        
+    
+        display: flex;
+        margin: 0 !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .horizontal img{
+        width: 10rem !important;
+    }
+    
+    .tarea{
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    
+    }
+    .vertical{
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    /* .vertical img{
+        width: 20rem;
+    } */
+    .vertical img{
+        width: 8rem;
+    }
+    .titulo h1{
+        text-align: center;
+        font-size: 2rem !important;
+       
+    }
+    .titulo p{
+        text-align: center;
+        font-size: 1rem;
+    }
+    .titulo{
+        background: linear-gradient(90deg, rgba(173,89,236,0.908000700280112) 11%, rgba(0,0,0,1) 55%);
+        background-size: 100% !important;
+    }
+    .tutorial{
+        text-align: center;
+        
+        margin-top: 2rem !important;
+    }
+    .tutorial p{
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    .tutorial li{
+        font-size: 1.2rem;
+    }
+    .guia{
+        text-align: center;
+    }
+    .audio{
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem !important;
+    }
+
+}
