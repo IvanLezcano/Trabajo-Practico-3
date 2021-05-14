@@ -21,6 +21,11 @@ let funciones = {
         localStorage.setItem("Tareas",JSON.stringify(tarea))
         
     },
+
+
+
+
+
   
 
     agregarTarea : function(titulo,estado) {
@@ -36,13 +41,20 @@ let funciones = {
             titulo:titulo,
             estado:estado
         }}
+        if (localStorage.getItem("Tareas") === null) {
+            this.crearObjeto()}
 
-        console.log(titulo)
+
+
+
+
         let tareas2 =JSON.parse(localStorage.getItem("Tareas"))
         tareas2.push(nuevaTarea)
         console.log(tareas2)
         localStorage.setItem("Tareas",JSON.stringify(tareas2))
         this.listarTareas2()
+        document.getElementById("mensaje").innerHTML = "Tarea agregada!:"
+
 
         
     },
@@ -60,9 +72,15 @@ let funciones = {
         
         if (localStorage.getItem("Tareas") === null) {
         this.crearObjeto()}
+        
             
         let tarea = JSON.parse(localStorage.getItem("Tareas"))
-        console.log(tarea)
+        console.log(tarea[0])
+    
+        if(tarea[0]===undefined){
+            document.getElementById("mensaje").innerHTML = "no tenes tareas pendientes!"
+
+        }
         
         tareas2=[]
         for(let i = 0; i < tarea.length; i++) {
@@ -87,8 +105,9 @@ let funciones = {
             tareas2.push(tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
             
         }
-        console.log(tareas2)
         document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
+        document.getElementById("mensaje").innerHTML = "Tarea filtrada por nombre"
+
     },
 
 
@@ -102,8 +121,9 @@ let funciones = {
             tareas2.push(tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
             
         }
-        console.log(tareas2)
         document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
+        document.getElementById("mensaje").innerHTML = "Tarea filtrada por estado!"
+
     },
 
 
@@ -157,14 +177,11 @@ let prueba = () => {
         case "agregar":
             let comando2 = document.getElementById('comando2').value;
             let comando3 = document.getElementById('comando3').value;
-            // if(!comando2){
-            //     console.log("debes escribir un titulo")
-            //     break
-            // }
-            // else if(!comando3){
-            //     console.log("debes escribir un estado")
-            //     break
-            // }
+             if(!comando2){
+                document.getElementById("mensaje").innerHTML = "Porfavor pone una tarea"
+                 break
+                }
+                
             funciones.agregarTarea(comando2,comando3)
             break;
         case "listar":
@@ -191,7 +208,6 @@ const operaciones = {
     "prueba": prueba,
     
 }
-// module.exports = operaciones
 
 
 
