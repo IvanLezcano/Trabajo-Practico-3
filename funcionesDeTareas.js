@@ -15,14 +15,29 @@
 
 let funciones = {
 
+    
+    crearObjeto:function(){
+        let tarea=[]
+        localStorage.setItem("Tareas",JSON.stringify(tarea))
+        
+    },
   
 
-    agregarTarea : function(titulo,estado="pendiente") {
-        
-        let nuevaTarea = { 
+    agregarTarea : function(titulo,estado) {
+        let nuevaTarea={}
+        if(estado===""){
+         nuevaTarea = { 
+                titulo:titulo,
+                estado:"pendiente"
+            } 
+        }else{
+
+         nuevaTarea = { 
             titulo:titulo,
             estado:estado
-        }
+        }}
+
+        console.log(titulo)
         let tareas2 =JSON.parse(localStorage.getItem("Tareas"))
         tareas2.push(nuevaTarea)
         console.log(tareas2)
@@ -43,15 +58,15 @@ let funciones = {
  
     listarTareas2 : function(){
         
-        let comando = document.getElementById('variable').value;
-        let tareas = JSON.parse(localStorage.getItem("Tareas"))
-        if (tareas=== null) {
-            this.crearObjeto()
+        if (localStorage.getItem("Tareas") === null) {
+        this.crearObjeto()}
             
-        }
+        let tarea = JSON.parse(localStorage.getItem("Tareas"))
+        console.log(tarea)
+        
         tareas2=[]
-        for(let i = 0; i < tareas.length; i++) {
-            tareas2.push(tareas[i].titulo+" "+tareas[i].estado);
+        for(let i = 0; i < tarea.length; i++) {
+            tareas2.push(tarea[i].titulo+" "+tarea[i].estado);
             
         }
         console.log(tareas2)
@@ -62,25 +77,37 @@ let funciones = {
 
 
 
-    filtrarNombre : function(filtro){
-        let tareas= this.leerJson()
+    filtrarNombre : function(){
+        let filtro = document.getElementById('comando2').value;
+
+        let tareas =JSON.parse(localStorage.getItem("Tareas"))
         let tareasFiltradas = tareas.filter(tarea=>tarea.titulo=== filtro);
-        return tareasFiltradas.forEach(i =>{
-            console.log(i.titulo+" "+i.estado)})
+        tareas2=[]
+        for(let i = 0; i < tareasFiltradas.length; i++) {
+            tareas2.push(tareasFiltradas[i].titulo+" "+tareasFiltradas[i].estado);
+            
+        }
+        console.log(tareas2)
+        document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
     },
 
 
     filtrarEstado : function(filtro){
-        let tareas= this.leerJson()
+        let tareas =JSON.parse(localStorage.getItem("Tareas"))
         let tareasFiltradas = tareas.filter(tarea=>tarea.estado=== filtro);
-        return tareasFiltradas.forEach(i =>{
-            console.log(i.titulo+" "+i.estado)})
+        tareas2=[]
+        for(let i = 0; i < tarea.length; i++) {
+            tareas2.push(tarea[i].titulo+" "+tarea[i].estado);
+            
+        }
+        console.log(tareas2)
+        document.getElementById("listado").innerHTML = "estas son sus tareas! :"+tareas2
     },
 
 
 
 
-    deshacer : function(comando2){
+    deshacer : function(){
         let tareaporborrar = document.getElementById('comando2').value;
 
         let tareas = JSON.parse(localStorage.getItem("Tareas"))
@@ -120,6 +147,8 @@ let funciones = {
 
 let prueba = () => {
     let comando = document.getElementById('variable').value;
+    let comando2 = document.getElementById('comando2').value;
+
 
 
     switch (comando) {
@@ -140,10 +169,10 @@ let prueba = () => {
             funciones.listarTareas2()
             break
         case "filtrarEstado":
-            funciones.filtrarEstado(comando2)
+            funciones.filtrarEstado()
             break;
             case "filtrarNombre":
-            funciones.filtrarNombre(comando2)
+            funciones.filtrarNombre()
             break;
         case "borrar":
             funciones.deshacer()
